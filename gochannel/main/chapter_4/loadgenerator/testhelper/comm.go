@@ -5,7 +5,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"gochannel/main/loadgenerator/lib"
+	"gochannel/main/chapter_4/loadgeneratordgenerator/lib"
 	"math/rand"
 	"net"
 	"time"

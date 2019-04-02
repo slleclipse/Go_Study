@@ -1,4 +1,4 @@
-package main
+package chapter_4
 
 import (
 	"fmt"
@@ -9,23 +9,19 @@ func main() {
 	var strChan = make(chan string, 3)
 	syncChan1 := make(chan struct{}, 1)
 	syncChan2 := make(chan struct{}, 2)
-	go receive(strChan, syncChan1, syncChan2)
-	go send(strChan, syncChan1, syncChan2)
+	go receive1(strChan, syncChan1, syncChan2)
+	go send1(strChan, syncChan1, syncChan2)
 	<-syncChan2
 	<-syncChan2
 }
 
-func receive(strChan <-chan string, syncChan1 <-chan struct{}, syncChan2 chan<- struct{}) {
+func receive1(strChan <-chan string, syncChan1 <-chan struct{}, syncChan2 chan<- struct{}) {
 	<- syncChan1
 	fmt.Println("Received a sync signal and wait a second...[reciever]")
 	time.Sleep(time.Second)
 
-	for {
-		if elem, ok := <- strChan; ok {
-			fmt.Println("Received: ", elem, "[receiver]")
-		} else {
-			break
-		}
+	for elem := range strChan{
+		fmt.Println("Received: ", elem, "[receiver]")
 	}
 	fmt.Println("Stopped. [receiver]")
 	syncChan2 <- struct{}{}
@@ -41,7 +37,7 @@ func receive(strChan <-chan string, syncChan1 <-chan struct{}, syncChan2 chan<- 
 	syncChan2 <- struct{}{}
 }*/
 
-func send(strChan chan<- string, syncChan1 chan<- struct{}, syncChan2 chan<- struct{}) {
+func send1(strChan chan<- string, syncChan1 chan<- struct{}, syncChan2 chan<- struct{}) {
 
 	for _, elem := range []string{"a", "b", "c", "d"}{
 		strChan <- elem
