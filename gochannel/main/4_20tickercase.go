@@ -7,7 +7,7 @@ import (
 
 func main() {
 	intChan := make(chan int, 1)
-	ticker := time.NewTicker(time.Second)
+	ticker := time.NewTicker(time.Second * 2)
 	go func() {
 		for _ = range ticker.C {
 			select {
