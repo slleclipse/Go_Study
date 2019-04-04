@@ -6,7 +6,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/astaxie/beego/logs"
-	"gochannel/main/chapter_4/loadgeneratordgenerator/lib"
+	"gochannel/main/chapter_4/loadgenerator/lib"
 	"math"
 	"sync/atomic"
 	"time"

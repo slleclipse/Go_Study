@@ -1,8 +1,8 @@
 package loadgenerator
 
 import (
-	"gochannel/main/chapter_4/loadgeneratordgenerator/lib"
-	"gochannel/main/chapter_4/loadgeneratordgenerator/testhelper"
+	"gochannel/main/chapter_4/loadgenerator/lib"
+	"gochannel/main/chapter_4/loadgenerator/testhelper"
 	"testing"
 	"time"
 )
